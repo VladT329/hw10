@@ -12,15 +12,18 @@ public class Main {
 
     public static void checkSmartphone(int deviceOs, int clientDeviceYear){
         int currentYear = LocalDate.now().getYear();
-        if (deviceOs == 1) {
-            System.out.print("Операционная система — Android, ");
+        String nameOs = "";
+        if (deviceOs == 0) {
+            nameOs = "iOS";
         } else {
-            System.out.print("Операционная система — IOS, ");
+            nameOs = "Android";
         }
         if (clientDeviceYear >= 2015 && clientDeviceYear <= currentYear){
-            System.out.print("установите обычную версию приложения");
-        } else {
-            System.out.print("установите облегченную версию приложения");
+            System.out.print("Установите обычную версию приложения для " + nameOs + " по ссылке");
+        } else if (clientDeviceYear < 2015){
+            System.out.print("Установите облегченную версию приложения для " + nameOs + " по ссылке");
+        } else if (clientDeviceYear > currentYear) {
+            System.out.println("Ваш телефон на " + nameOs + " из будущего " + clientDeviceYear + " года. Установите обычную версию приложения");
         }
     }
     public static int showDeliveryTime (int distance) {
@@ -43,8 +46,7 @@ public class Main {
         System.out.println();
 
         System.out.println("Задание 2");
-        checkSmartphone(0, 2015);
-        System.out.println(); /// почему-то строка игнорируется!!!
+        checkSmartphone(0, 2025);
         System.out.println();
 
         System.out.println("Задание 3");
